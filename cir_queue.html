@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Queue Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+  <br>
+  <a href="index.html" style="margin-left: 4%;"> <-  Go Back</a>
+  <br>
+  <h3 align="center" style="color:green;"> Welcome To Queue Visualizer</h3>
+  <div style="margin:3%;" class="text-center">
+    <div class="row">
+      <div class="col">
+        <label for="element">Enter The Element Value</label>
+        <input type="number" id="element" class="form-control">
+      </div>
+
+      <div class="col">
+        <label for="operation">Select Operation</label>
+            <select class="form-control" id="operation" onchange="disableField()">
+                <option value="1">Enqueue</option>
+                <option value="2">Dequeue</option>
+            </select>
+      </div>
+
+      <div class="col">
+        <br>
+        <button type="submit" class="btn btn-primary" onclick="performOperation();">Perform Operation</button>
+      </div>
+
+    </div>
+</div>
+
+    <!-- Modal for empty queue-->
+<div class="modal fade" id="negSize" tabindex="-1" 
+role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Queue Is Empty
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for queue full error-->
+<div class="modal fade" id="maxSize" tabindex="-1" 
+role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Queue Is Full !!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Empty Stack-->
+<div class="modal fade" id="empField" tabindex="-1" 
+role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Please Enter Element Value !!!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+    <h4 align="center" id="displayDeq" style="color:green">Last Dequeued Element : NA</h4>
+    <div class="queueBox">
+        <div class="queueSubBox" style="border:none;" id="f0">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f1">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f2">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f3">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden; " id="f4">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f5">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f6">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f7">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f8">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f9">
+            FRONT
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="f11">
+            FRONT
+        </div>
+
+    </div>
+
+    <div class="queueBox" style="margin-top:0%;">
+        <div class="queueSubBox" style="border:none;" id="Down0">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down1">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down2">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down3">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down4">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down5">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down6">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down7">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down8">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down9">
+            &#8595;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Down11">
+            &#8595;
+        </div>
+
+    </div>
+
+    <div class="queueBox" style="margin-top: 1%;">
+        <div class="queueSubBox" id="val0">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val1">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val2">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val3">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val4">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val5">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val6">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val7">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val8">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val9">
+            NULL
+        </div>
+
+        <div class="queueSubBox" id="val11" style="visibility: hidden;">
+            NULL
+        </div>
+
+    </div>
+
+    <div class="queueBox" style="margin-top:0%;">
+        <div class="queueSubBox" style="border:none;" id="Up0">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up1">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up2">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up3">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up4">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up5">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up6">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up7">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up8">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up9">
+            &#8593;
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="Up11">
+            &#8593;
+        </div>
+
+    </div>
+
+    <div class="queueBox" style="margin-top: 0%;">
+        <div class="queueSubBox" style="border:none;" id="r0">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r1">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r2">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r3">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r4">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r5">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r6">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r7">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r8">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r9">
+            REAR
+        </div>
+
+        <div class="queueSubBox" style="border:none;visibility: hidden;" id="r11">
+            REAR
+        </div>
+
+  </div>
+
+</body>
+<script src="script.js"></script>
+<script>
+    resetCirQueue();
+    function disableField(){
+        if(document.getElementById("operation").value == "2"){
+            document.getElementById("element").setAttribute("disabled","true");
+            document.getElementById("element").value = "";
+        }else{
+            document.getElementById("element").removeAttribute("disabled");
+            document.getElementById("element").value = "";
+        }
+    }
+
+    function performOperation(){
+        let val = document.getElementById("element").value;
+
+        switch(document.getElementById("operation").value){
+            case "1":
+                if(CQMaxSize == 10){
+                    $("#maxSize").modal("show");
+                }else{
+                    if(val == "")
+                        $("#empField").modal("show");
+                    else
+                        cir_enqueue(val);
+                }
+                    break;
+                
+            case "2" :
+                if(CQMaxSize == 0)
+                   $("#negSize").modal("show");
+                else
+                    cir_dequeue();
+                      break;
+
+        }
+    }
+</script>
+</html>

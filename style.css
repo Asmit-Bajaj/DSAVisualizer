@@ -1,0 +1,196 @@
+/*CSS For 1-D Array*/
+.oneDArray-arrayBox{
+    display: flex;
+    margin-top: 5%;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.oneDArray-arraySubBox{
+    width: 100px;
+    /* margin: 10px; */
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    color: green;
+    border: 0.5px solid black;
+}
+
+/*CSS For 2-D Array*/
+.twoDArray-arrayBox{
+    display: flex;
+    margin-top: 5%;
+  flex-wrap: nowrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.twoDArray-arraySubBox{
+    width: 100px;
+    /* margin: 10px; */
+    text-align: center;
+    line-height: 50px;
+    font-size: 21px;
+    color: green;
+    border: 0.5px solid black;
+}
+
+/*for Singly Linked List*/
+.singleLinkedList-listBox{
+  display: flex;
+  margin-top: 5%;
+flex-wrap: nowrap;
+width: 100%;
+justify-content: center;
+}
+
+.singleLinkedList-listSubBox{
+  width: 100px;
+  /* margin: 10px; */
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  color: green;
+  border: 0.5px solid black;
+}
+
+.rectangle {
+  height: 20px;
+    margin-top: 26px;
+    width: 43px;
+    border: 2px solid green;
+}
+
+.triangle-right {
+	width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-left: 40px solid green;
+    border-bottom: 19px solid transparent;
+    margin-top: 15px
+}
+
+
+/*CSS FOR STACK*/
+.stackBox{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+flex-wrap: nowrap;
+width: 100px;
+justify-content: center;
+/* margin-left: 41%; */
+border: 1px solid black;
+}
+
+#indexBoxStack{
+  width:100px;
+  /* border: 1px solid black; */
+  line-height: 63px;
+  font-size: 29px;
+  color:green;
+}
+
+.mainBox{
+  display: flex;
+  /* flex-direction: column; */
+  /* margin-top: 5%; */
+flex-wrap: nowrap;
+width:400px;
+margin-left:36%;
+/* width: 100%; */
+justify-content: space-between;
+/* margin-left: 41%; */
+}
+
+.stackSubBox{
+  width: 100px;
+  /* margin: 10px; */
+  text-align: center;
+  line-height: 63px;
+  font-size: 20px;
+  color: green;
+  border: 0.5px solid black;
+  height: 57px;
+}
+
+/*CSS FOR QUEUE*/
+.queueBox{
+  display: flex;
+  margin-top: 5%;
+flex-wrap: nowrap;
+width: 100%;
+justify-content: center;
+}
+
+.queueSubBox{
+  width: 100px;
+  /* margin: 10px; */
+  text-align: center;
+  line-height: 39px;
+  font-size: 21px;
+  color: green;
+  border: 0.5px solid black;
+}
+
+/*CSS FOR SEARCHING*/
+.search-arrayBox{
+  display: flex;
+  margin-top: 5%;
+flex-wrap: nowrap;
+width: 100%;
+justify-content: center;
+}
+
+.search-arraySubBox{
+  width: 100px;
+  /* margin: 10px; */
+  text-align: center;
+  line-height: 43px;
+  font-size: 21px;
+  color: green;
+  border: 0.5px solid black;
+}
+
+/*CSS FOR SORTING*/
+.sortBox{
+  display: flex;
+  margin-top: 5%;
+flex-wrap: nowrap;
+width: 100%;
+justify-content: center;
+}
+
+.sortSubBox{
+  width: 100px;
+  /* margin: 10px; */
+  text-align: center;
+  line-height: 48px;
+  font-size: 24px;
+  color: green;
+  border: 0.5px solid black;
+}
+
+/*CSS FOR HASHING*/
+
+.hashMainBox{
+  display: flex;
+    /* flex-direction: column; */
+    /* margin-top: 5%; */
+    flex-wrap: nowrap;
+    width: 100%;
+    flex-grow: 3;
+    /* margin-left: 36%; */
+    /* width: 100%; */
+    /* justify-content: space-between; */
+    /* margin-left: 41%;*/
+}
+
+#indexBoxHash{
+  /* width:100px; */
+  /* border: 1px solid black; */
+  line-height: 63px;
+  font-size: 29px;
+  color:green;
+}

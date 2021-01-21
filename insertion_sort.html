@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+  <br>
+  <a href="index.html" style="margin-left: 4%;"> <-  Go Back</a>
+  <br>
+  <h3 align="center" style="color:green;"> Welcome To Insertion Sort Visualizer</h3>
+    <div style="margin:3%;" class="text-center">
+        <div class="row">
+            <div class="col">
+                <input type="number" id="delay" class="form-control" placeholder="Enter The Delay Time (In Milliseconds)">
+            </div>
+
+          <div class="col">
+            <button type="submit" class="btn btn-primary" onclick="getInsertionSort();">Start Sorting</button>
+          </div>
+
+        </div>
+    </div>
+<!-- Modal for empty delay-->
+<div class="modal fade" id="empField" tabindex="-1" 
+role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Please Provide The Delay Time
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<h4 style="color:green;" id="key" align="center">Current Key : NA</h4>
+
+<br><br>
+<div class="sortBox" style="margin-top: 1%;" id="valueBox">
+    <div class="sortSubBox" style="border:none;visibility: hidden;">
+        Compare
+    </div>
+
+    <div class="sortSubBox" id="k0" style="border:none;visibility: hidden;">
+        60 < 50
+    </div>
+
+    <div class="sortSubBox" id="k1" style="border:none;visibility: hidden;">
+        50
+    </div>
+
+    <div class="sortSubBox" id="k2" style="border:none;visibility: hidden;">
+        30
+    </div>
+
+    <div class="sortSubBox" id="k3" style="border:none;visibility: hidden;">
+        25
+    </div>
+
+    <div class="sortSubBox" id="k4" style="border:none;visibility: hidden;">
+        20
+    </div>
+
+    <div class="sortSubBox" id="k5" style="border:none;visibility: hidden;">
+        15
+    </div>
+
+    <div class="sortSubBox" id="k6" style="border:none;visibility: hidden;">
+        24
+    </div>
+
+    <div class="sortSubBox" id="k7" style="border:none;visibility: hidden;">
+        36
+    </div>
+
+    <div class="sortSubBox" id="k8" style="border:none;visibility: hidden;">
+        40
+    </div>
+</div>
+
+    <div class="sortBox" style="margin-top: 1%;" id="valueBox">
+        <div class="sortSubBox" style="border:none;">
+            Values
+        </div>
+
+        <div class="sortSubBox" id="0">
+            60
+        </div>
+
+        <div class="sortSubBox" id="1">
+            50
+        </div>
+
+        <div class="sortSubBox" id="2">
+            30
+        </div>
+
+        <div class="sortSubBox" id="3">
+            25
+        </div>
+
+        <div class="sortSubBox" id="4">
+            20
+        </div>
+
+        <div class="sortSubBox" id="5">
+            15
+        </div>
+
+        <div class="sortSubBox" id="6">
+            24
+        </div>
+
+        <div class="sortSubBox" id="7">
+            36
+        </div>
+
+        <div class="sortSubBox" id="8">
+            40
+        </div>
+    </div>
+
+    <div class="sortBox" style="margin-top: 1%;">
+        <div class="sortSubBox" style="border:none;">
+            Index
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            0
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            1
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            2
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            3
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            4
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            5
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            6
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            7
+        </div>
+
+        <div class="sortSubBox" style="border:none;">
+            8
+        </div>
+  </div>
+
+</body>
+<script src="script.js"></script>
+<script>
+    function getInsertionSort(){
+        let delay = document.getElementById("delay").value;
+        if(delay == ""){
+            $("#empField").modal("show");
+        }else{
+            insertionSort(delay);
+        }
+    }
+
+</script>
+</html>
