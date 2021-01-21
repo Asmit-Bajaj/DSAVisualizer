@@ -1,4 +1,4 @@
-Dsa Visualizer helps the student to visualize different algorithms in graphical manner so that they can understand them in an easy manner
+DSA Visualizer helps the student to visualize different algorithms in graphical manner so that they can understand them easily
 DSA Visualizer covers the following algorithms and data structures :- 
 
 1. Selection Sort
